@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="container_shadow">
+    <h2>Upload identity document</h2>
+
+    <span *ngIf="selectedFileName" class="file-name">{{ selectedFileName }}</span>
+    <span *ngIf="captureTime" class="capture-time"> (Captured at: {{ captureTime }})</span>
+  
+    <input
+      type="file"
+      (change)="onFileSelected($event)"
+      style="display: none;"
+      #fileInput
+    />
+    <button class="upload-button" (click)="fileInput.click()">Upload file</button>
+    
+    <button class="upload-button_act" (click)="onUpload()" [disabled]="!selectedFile">Check your document</button>
+  
+    <div class ="image" *ngIf="croppedImage">
+      <h4>Cropped document:</h4>
+      <img
+        [src]="'data:image/jpeg;base64,' + croppedImage"
+        alt="Cropped document"
+        style="max-width: 100%; cursor: default;" 
+      />
+    </div>
+  
+    <div *ngIf="isCameraActive">
+      <video #video autoplay></video>
+      <button class="capture-button" *ngIf="showCaptureButton" (click)="captureImage()">Capture image</button>
+    </div>
+  
+    <button class="capture-button" *ngIf="!isCameraActive" (click)="openCamera()">Open camara</button>
+
+    <button class="video-button" type="button" (click)="startVideoDetection()">Open video</button>
+
+    <canvas #canvas style="display: none;"></canvas>
+  </div>
+</div>
+  
