@@ -11,7 +11,7 @@ export class UploadComponent {
   selectedFile: File | null = null;
   selectedFileName: string | null = null;
   captureTime: string | null = null;
-  apiUrl = 'https://pre.mobbeel.com/mobbscan/detect';
+  apiUrl = 'https://example.com/api';
   croppedImage: string | null = null;
   result: any;
   isCameraActive: boolean = false;
